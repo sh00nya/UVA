@@ -13,7 +13,7 @@ using namespace std;
 
 int main ()
 {
-  int T;
+	int T;
 	cin >> T;
 	map<string,int> M;
 	for( int i=0; i<T; ++i )
@@ -22,17 +22,10 @@ int main ()
 		if( i == 0 )
 			cin.ignore();
 		getline( cin, line );
-		int size = line.size();
+		int pos = line.find(" ");
 		string country;
-		for( int j=0; j<size; ++j )
-		{
-			if( line[j] == ' ' )
-			{
-				country = line.substr( 0, j );
-				++M[country];
-				break;
-			}
-		}
+		country=line.substr(0,pos);
+		M[country]++;
 	}
 	for( map<string,int>::iterator it=M.begin(); it!=M.end(); ++it )
 		cout << it->first << " " << it->second << endl;

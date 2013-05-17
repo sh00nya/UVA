@@ -1,0 +1,61 @@
+#include<cstdio>
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+int main()
+{
+
+    bool a=false,b=true;
+    while(1)
+    {
+
+
+        string ss;
+        size_t  pos;
+        getline(cin,ss);
+        if(a && ss.find('_')!=string::npos)
+        {
+            break;
+        }
+        if(ss.find('_')!=string::npos)
+        {
+            a=true;
+            b=false;
+        }
+        else
+        {
+            b=true;
+        }
+        if(b)
+        {
+            replace(ss.begin(),ss.end(),' ','0');
+            replace(ss.begin(),ss.end(),'o','1');
+            pos=ss.find('|');
+            cout<<pos;
+            while(pos!=string::npos)
+            {
+               ss.erase(ss.begin()+pos);
+               pos=ss.find('|');
+            }
+            pos=ss.find('.');
+            cout<<pos;
+            while(pos!=string::npos)
+            {
+               ss.erase(ss.begin()+pos);
+               pos=ss.find('.');
+            }
+            //ss=ss.substr(2);
+            //char* aa;
+            //*aa=ss.c_str();
+            //printf("%c",aa[0]);
+            //cout<<ss;
+            unsigned int a;
+            a=strtoull(ss.c_str(),NULL,2);
+            cout<<(char)a;
+        }
+    }
+
+
+    return 0;
+}

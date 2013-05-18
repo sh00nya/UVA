@@ -5,57 +5,23 @@
 using namespace std;
 int main()
 {
-
-    bool a=false,b=true;
-    while(1)
+    string ss;
+    while(getline(cin,ss))
     {
-
-
-        string ss;
-        size_t  pos;
-        getline(cin,ss);
-        if(a && ss.find('_')!=string::npos)
+        string os="";
+        if(ss[0]=='_')
+            continue;
+        for(int i=0;i<ss.length();i++)
         {
-            break;
+            if(ss[i]=='o')
+                os+='1';
+            if(ss[i]==' ')
+                os+='0';
         }
-        if(ss.find('_')!=string::npos)
-        {
-            a=true;
-            b=false;
-        }
-        else
-        {
-            b=true;
-        }
-        if(b)
-        {
-            replace(ss.begin(),ss.end(),' ','0');
-            replace(ss.begin(),ss.end(),'o','1');
-            pos=ss.find('|');
-            cout<<pos;
-            while(pos!=string::npos)
-            {
-               ss.erase(ss.begin()+pos);
-               pos=ss.find('|');
-            }
-            pos=ss.find('.');
-            cout<<pos;
-            while(pos!=string::npos)
-            {
-               ss.erase(ss.begin()+pos);
-               pos=ss.find('.');
-            }
-            //ss=ss.substr(2);
-            //char* aa;
-            //*aa=ss.c_str();
-            //printf("%c",aa[0]);
-            //cout<<ss;
-            unsigned int a;
-            a=strtoull(ss.c_str(),NULL,2);
-            cout<<(char)a;
-        }
+        unsigned int a;
+        a=strtoull(os.c_str(),NULL,2);
+        cout<<(char)a;
+        //cout<<os<<endl;
     }
-
-
     return 0;
 }
